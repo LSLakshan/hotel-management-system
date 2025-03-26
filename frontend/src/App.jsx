@@ -1,13 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import HotelsList from "./pages/HotelsList";
 
 export default function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">Hello, Tailwind CSS!</h1>
-    </div>
+    <Router>
+      <Navbar />
+      <div className="container mx-auto p-4">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/hotels" element={<HotelsList />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
-
