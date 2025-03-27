@@ -1,6 +1,6 @@
-import HotelCard from "../components/HotelCard";
+import HotelCard from "../components/RoomCard";
 
-const hotels = [
+const rooms = [
   {
     name: "Midigama Villa Resort",
     location: "Weligama",
@@ -31,13 +31,13 @@ const hotels = [
   },
 ];
 
-export default function HotelsList() {
+export default function RoomsList() {
   return (
     <div className="p-6">
       <h1 className="text-xl font-bold">Available Hotels</h1>
       <div className="mt-4 space-y-4">
-        {hotels.map((hotel, index) => (
-          <HotelCard key={index} hotel={hotel} />
+        {rooms.map((room, index) => (
+          <HotelCard key={index} room={room} />
         ))}
       </div>
     </div>
