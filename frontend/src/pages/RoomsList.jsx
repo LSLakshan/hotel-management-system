@@ -1,43 +1,24 @@
-import HotelCard from "../components/RoomCard";
-
-const rooms = [
-  {
-    name: "Midigama Villa Resort",
-    location: "Weligama",
-    description: "Budget Double Room with 1 large double bed.",
-    price: "1,482",
-    image: "https://via.placeholder.com/150", 
-  },
-  {
-    name: "Casa Luna Home Stay",
-    location: "Dickwella",
-    description: "Standard Double Room with Shared Bathroom.",
-    price: "7,116",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Rainforest Mount Lodge",
-    location: "Deniyaya",
-    description: "Budget Double Room with breakfast included.",
-    price: "5,559",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Lime & Co Hostel",
-    location: "Weligama",
-    description: "Standard Twin Room with 2 single beds.",
-    price: "8,453",
-    image: "https://via.placeholder.com/150",
-  },
-];
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function RoomsList() {
+  const [rooms, setRooms] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/rooms").then((res) => setRooms(res.data));
+  }, []);
+
   return (
-    <div className="p-6">
-      <h1 className="text-xl font-bold">Available Hotels</h1>
-      <div className="mt-4 space-y-4">
-        {rooms.map((room, index) => (
-          <HotelCard key={index} room={room} />
+    <div className="container mx-auto mt-5">
+      <h2 className="text-xl font-bold mb-3">Rooms</h2>
+      <div className="grid grid-cols-3 gap-4">
+        {rooms.map((room) => (
+          <div key={room._id} className="border p-4">
+            <img src={room.image} alt={room.name} className="w-full h-40 object-cover" />
+            <h3 className="font-bold">{room.name}</h3>
+            <p>Price: ${room.price}</p>
+            <p>{room.description}</p>
+          </div>
         ))}
       </div>
     </div>
