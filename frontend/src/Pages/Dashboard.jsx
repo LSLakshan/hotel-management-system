@@ -4,11 +4,11 @@ import Sidebar from "../components/Sidebar";
 
 const Dashboard = () => {
   return (
-    <div className="flex">
+    
+    <div className= "flex h-screen bg-gray-100 w-full">
       <Sidebar />
-      <div className="flex-1 p-6">
+      <div className="flex-1">
         <Navbar />
-        <h2 className="text-2xl font-bold mt-4">Welcome to Dashboard</h2>
       </div>
     </div>
   );
